@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "关于 Marvel | Marvel's Multiverse",
@@ -33,6 +34,46 @@ export default function AboutPage() {
         <p>
           这个网站记录我写的东西、做的技能、和一些想法碎片。
         </p>
+
+        <div className="pt-8 border-t-2 border-[#1A1A2E]">
+          <p
+            className="text-xs font-black tracking-widest text-[#F0F0F0]/30 mb-6"
+            style={{ fontFamily: "var(--font-bangers)" }}
+          >
+            CONTACT
+          </p>
+          <div className="flex flex-col sm:flex-row items-start gap-8">
+            <a
+              href="https://github.com/Gituheart"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit GitHub profile"
+              className="inline-block px-6 py-2.5 border-2 border-[#F0F0F0]/25 text-[#F0F0F0]/50 font-black
+                hover:border-[#F0F0F0]/70 hover:text-[#F0F0F0] transition-all duration-150 tracking-widest text-sm"
+              style={{ fontFamily: "var(--font-bangers)" }}
+            >
+              GITHUB →
+            </a>
+            <div className="flex items-center gap-4">
+              <Image
+                src="/wechat-qr.jpg"
+                alt="微信二维码"
+                width={120}
+                height={120}
+                className="border border-[#F0F0F0]/15"
+              />
+              <div>
+                <div
+                  className="text-[10px] font-black tracking-widest text-[#F0F0F0]/30 mb-1"
+                  style={{ fontFamily: "var(--font-bangers)" }}
+                >
+                  WECHAT
+                </div>
+                <p className="text-sm text-[#F0F0F0]/40">扫码加我微信</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="pt-4 border-t-2 border-[#1A1A2E]">
           <p className="text-sm text-[#F0F0F0]/40" style={{ fontFamily: "var(--font-bangers)", letterSpacing: "0.05em" }}>

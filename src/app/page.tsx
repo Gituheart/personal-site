@@ -1,5 +1,4 @@
 import type { CSSProperties } from "react";
-import Image from "next/image";
 import HalftoneBackground from "@/components/spider-verse/HalftoneBackground";
 import ActionLines from "@/components/spider-verse/ActionLines";
 import UniverseFlashBg from "@/components/spider-verse/UniverseFlashBg";
@@ -350,24 +349,6 @@ export default function HomePage() {
               >
                 GITHUB →
               </a>
-            </div>
-            <div className="flex items-center gap-4 mt-6">
-              <Image
-                src="/wechat-qr.jpg"
-                alt="微信二维码"
-                width={96}
-                height={96}
-                className="border border-[#F0F0F0]/15 object-cover"
-              />
-              <div>
-                <div
-                  className="text-[10px] font-black tracking-widest text-[#F0F0F0]/30 mb-1"
-                  style={{ fontFamily: "var(--font-bangers)" }}
-                >
-                  WECHAT
-                </div>
-                <p className="text-xs text-[#F0F0F0]/40">扫码加我微信</p>
-              </div>
             </div>
           </div>
 
