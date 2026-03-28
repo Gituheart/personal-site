@@ -56,7 +56,8 @@ export default function HomePage() {
 
   const articlesSet = new Set(articles.map((a) => a.slug));
 
-  const projects = getAllPosts("projects").slice(0, 3);
+  const allProjects = getAllPosts("projects");
+  const projects = allProjects.slice(0, 3);
 
   return (
     <div>
@@ -355,7 +356,7 @@ export default function HomePage() {
           {/* Stats */}
           <div className="grid grid-cols-2 gap-4 shrink-0">
             {[
-              { label: "PROJECTS", value: projects.length, color: "#FFD60A" },
+              { label: "PROJECTS", value: allProjects.length, color: "#FFD60A" },
               { label: "ARTICLES", value: articles.length, color: "#E63946" },
               { label: "THOUGHTS", value: thoughts.length, color: "#457BFF" },
               { label: "SKILLS", value: skills.length, color: "#7B2FBE" },
