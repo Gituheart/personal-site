@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getPost, getAllPosts } from "@/lib/content";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import PostStats from "@/components/PostStats";
 
 export async function generateStaticParams() {
   return getAllPosts("thoughts").map((t) => ({ slug: t.slug }));
@@ -44,9 +45,12 @@ export default async function ThoughtDetailPage({
         >
           ← 返回感悟
         </Link>
-        <span className="text-xs text-[#F0F0F0]/30 tracking-widest" style={{ fontFamily: "var(--font-bangers)" }}>
-          {post.readingTime} 阅读
-        </span>
+        <div className="flex items-center gap-4">
+          <span className="text-xs text-[#F0F0F0]/30 tracking-widest" style={{ fontFamily: "var(--font-bangers)" }}>
+            {post.readingTime} 阅读
+          </span>
+          <PostStats section="thoughts" slug={slug} accent="#457BFF" />
+        </div>
       </div>
 
       <div className="mb-10 pb-8 border-b-2 border-[#1A1A2E]">
