@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import HalftoneBackground from "@/components/spider-verse/HalftoneBackground";
 import ActionLines from "@/components/spider-verse/ActionLines";
 import UniverseFlashBg from "@/components/spider-verse/UniverseFlashBg";
@@ -329,14 +330,45 @@ export default function HomePage() {
               在涂鸦智能做技术支持，同时用 AI 造自己想要的东西。
               写文章、做项目、开发 Claude Skills——记录一切有趣的探索。
             </p>
-            <Link
-              href="/about"
-              className="inline-block mt-6 px-6 py-2.5 border-2 border-[#7B2FBE] text-[#7B2FBE] font-black
-                hover:bg-[#7B2FBE] hover:text-white transition-all duration-150 tracking-widest text-sm"
-              style={{ fontFamily: "var(--font-bangers)" }}
-            >
-              FULL BIO →
-            </Link>
+            <div className="flex items-center gap-3 mt-6 flex-wrap">
+              <Link
+                href="/about"
+                className="inline-block px-6 py-2.5 border-2 border-[#7B2FBE] text-[#7B2FBE] font-black
+                  hover:bg-[#7B2FBE] hover:text-white transition-all duration-150 tracking-widest text-sm"
+                style={{ fontFamily: "var(--font-bangers)" }}
+              >
+                FULL BIO →
+              </Link>
+              <a
+                href="https://github.com/Gituheart"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit GitHub profile"
+                className="inline-block px-6 py-2.5 border-2 border-[#F0F0F0]/25 text-[#F0F0F0]/50 font-black
+                  hover:border-[#F0F0F0]/70 hover:text-[#F0F0F0] transition-all duration-150 tracking-widest text-sm"
+                style={{ fontFamily: "var(--font-bangers)" }}
+              >
+                GITHUB →
+              </a>
+            </div>
+            <div className="flex items-center gap-4 mt-6">
+              <Image
+                src="/wechat-qr.jpg"
+                alt="微信二维码"
+                width={96}
+                height={96}
+                className="border border-[#F0F0F0]/15 object-cover"
+              />
+              <div>
+                <div
+                  className="text-[10px] font-black tracking-widest text-[#F0F0F0]/30 mb-1"
+                  style={{ fontFamily: "var(--font-bangers)" }}
+                >
+                  WECHAT
+                </div>
+                <p className="text-xs text-[#F0F0F0]/40">扫码加我微信</p>
+              </div>
+            </div>
           </div>
 
           {/* Stats */}
