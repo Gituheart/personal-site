@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getPost, getAllPosts } from "@/lib/content";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import PostStats from "@/components/PostStats";
 
 export async function generateStaticParams() {
   return getAllPosts("skills").map((s) => ({ slug: s.slug }));
@@ -44,9 +45,12 @@ export default async function SkillDetailPage({
         >
           ← 返回 Skills
         </Link>
-        <span className="text-xs text-[#F0F0F0]/30 tracking-widest" style={{ fontFamily: "var(--font-bangers)" }}>
-          {post.readingTime} 阅读
-        </span>
+        <div className="flex items-center gap-4">
+          <span className="text-xs text-[#F0F0F0]/30 tracking-widest" style={{ fontFamily: "var(--font-bangers)" }}>
+            {post.readingTime} 阅读
+          </span>
+          <PostStats section="skills" slug={slug} accent="#7B2FBE" />
+        </div>
       </div>
 
       <div className="mb-10 pb-8 border-b-2 border-[#1A1A2E]">
