@@ -40,11 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local wallpaper source files (copied to public/wallpapers/ for deployment)
+# large media files — source wallpapers only, not for repo
 /spider-verse-wallpapers/
-
-# large media files — serve via CDN, already uploaded to Vercel
-/public/videos/
 
 # local deploy script (contains env var reference, not for repo)
 /deploy.sh
