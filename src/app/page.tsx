@@ -6,6 +6,7 @@ import VideoBg from "@/components/spider-verse/VideoBg";
 import HeroContent from "@/components/spider-verse/HeroContent";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/content";
+import TotalViews from "@/components/TotalViews";
 
 const categories = [
   {
@@ -384,6 +385,9 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="mt-4 text-right">
+            <TotalViews />
           </div>
         </div>
       </section>
