@@ -1,0 +1,202 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-spider-red: #E63946;
+  --color-spider-blue: #457BFF;
+  --color-spider-purple: #7B2FBE;
+  --color-spider-black: #0A0A0F;
+  --color-spider-dark: #12121A;
+  --color-spider-panel: #1A1A2E;
+  --color-spider-white: #F0F0F0;
+  --color-spider-yellow: #FFD60A;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0A0A0F;
+    color: #F0F0F0;
+    overflow-x: hidden;
+    font-family: var(--font-noto), sans-serif;
+  }
+
+  ::selection {
+    background-color: #E63946;
+    color: white;
+  }
+
+  /* 文章正文字体与全站一致 */
+  .prose {
+    font-family: var(--font-noto), sans-serif;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    font-family: var(--font-bangers), sans-serif;
+    letter-spacing: 0.03em;
+  }
+}
+
+@layer utilities {
+  /* Ben-Day 网点背景 */
+  .halftone {
+    background-image: radial-gradient(circle, #ffffff15 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .halftone-dense {
+    background-image: radial-gradient(circle, #ffffff20 1.5px, transparent 1.5px);
+    background-size: 12px 12px;
+  }
+
+  .halftone-red {
+    background-image: radial-gradient(circle, #E6394628 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+  }
+
+  /* 漫画描边 */
+  .comic-border {
+    border: 3px solid #F0F0F0;
+    box-shadow: 4px 4px 0px #F0F0F0;
+  }
+
+  .comic-border-red {
+    border: 3px solid #E63946;
+    box-shadow: 4px 4px 0px #E63946;
+  }
+
+  .comic-border-blue {
+    border: 3px solid #457BFF;
+    box-shadow: 4px 4px 0px #457BFF;
+  }
+
+  .comic-border-yellow {
+    border: 3px solid #FFD60A;
+    box-shadow: 4px 4px 0px #FFD60A;
+  }
+
+  /* Pop-out 阴影 */
+  .pop-shadow {
+    box-shadow: 6px 6px 0px #000000, 3px 3px 0px #E63946;
+  }
+
+  .pop-shadow-blue {
+    box-shadow: 6px 6px 0px #000000, 3px 3px 0px #457BFF;
+  }
+
+  /* 文字描边 */
+  .text-stroke {
+    -webkit-text-stroke: 2px #0A0A0F;
+    paint-order: stroke fill;
+  }
+
+  .text-stroke-white {
+    -webkit-text-stroke: 1.5px #F0F0F0;
+    paint-order: stroke fill;
+  }
+
+  /* 动作线放射背景（通过 mask 实现） */
+  .action-lines {
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      transparent 3deg,
+      #ffffff08 3deg,
+      #ffffff08 4deg
+    );
+  }
+}
+
+/* RGB 故障动画 */
+@keyframes glitch-red {
+  0%   { transform: translate(-3px, 0); clip-path: polygon(0 15%, 100% 15%, 100% 40%, 0 40%); }
+  25%  { transform: translate(3px, 0);  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); }
+  50%  { transform: translate(-2px, 1px); clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%); }
+  75%  { transform: translate(2px, -1px); clip-path: polygon(0 5%,  100% 5%,  100% 25%, 0 25%); }
+  100% { transform: translate(-3px, 0); clip-path: polygon(0 15%, 100% 15%, 100% 40%, 0 40%); }
+}
+
+@keyframes glitch-blue {
+  0%   { transform: translate(3px, 0);  clip-path: polygon(0 55%, 100% 55%, 100% 75%, 0 75%); }
+  25%  { transform: translate(-3px, 0); clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%); }
+  50%  { transform: translate(2px, -1px); clip-path: polygon(0 70%, 100% 70%, 100% 90%, 0 90%); }
+  75%  { transform: translate(-2px, 1px); clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%); }
+  100% { transform: translate(3px, 0);  clip-path: polygon(0 55%, 100% 55%, 100% 75%, 0 75%); }
+}
+
+@keyframes flicker {
+  0%, 92%, 100% { opacity: 1; }
+  93% { opacity: 0.3; }
+  94% { opacity: 1; }
+  96% { opacity: 0.1; }
+  97% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-8px) rotate(1deg); }
+}
+
+/* ─── Mobile: reduce hero scatter distance on small screens ─── */
+@media (max-width: 768px) {
+  .h-badge-side  { transform: translateX(40%)  translateY(-55%) rotate(12deg)  scale(0.50); }
+  .h-title1-side { transform: translateX(-55%) translateY(-5%)  rotate(-12deg) scale(0.44); }
+  .h-title2-side { transform: translateX(52%)  translateY(5%)   rotate(10deg)  scale(0.44); }
+  .h-sub-side    { transform: translateX(10%)  translateY(75%)  rotate(4deg)   scale(0.58); }
+  .h-btn1-side   { transform: translateX(-42%) translateY(65%)  rotate(-14deg) scale(0.52); }
+  .h-btn2-side   { transform: translateX(-8%)  translateY(-75%) rotate(-8deg)  scale(0.52); }
+}
+
+/* STABLE SIDES POSITIONS */
+.h-badge-side  { transform: translateX(68%)  translateY(-78%)  rotate(18deg)  scale(0.50); opacity: 0.72; }
+.h-title1-side { transform: translateX(-90%) translateY(-6%)   rotate(-16deg) scale(0.44); opacity: 0.72; }
+.h-title2-side { transform: translateX(84%)  translateY(6%)    rotate(14deg)  scale(0.44); opacity: 0.72; }
+.h-sub-side    { transform: translateX(16%)  translateY(108%)  rotate(5deg)   scale(0.58); opacity: 0.72; }
+.h-btn1-side   { transform: translateX(-70%) translateY(90%)   rotate(-20deg) scale(0.52); opacity: 0.72; }
+.h-btn2-side   { transform: translateX(-14%) translateY(-108%) rotate(-10deg) scale(0.52); opacity: 0.72; }
+
+/* FLY-OUT keyframes */
+@keyframes h-badge-out  { 0%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} 100%{transform:translateX(68%)  translateY(-78%)  rotate(18deg)  scale(0.50);opacity:0.72} }
+@keyframes h-title1-out { 0%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} 100%{transform:translateX(-90%) translateY(-6%)   rotate(-16deg) scale(0.44);opacity:0.72} }
+@keyframes h-title2-out { 0%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} 100%{transform:translateX(84%)  translateY(6%)    rotate(14deg)  scale(0.44);opacity:0.72} }
+@keyframes h-sub-out    { 0%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} 100%{transform:translateX(16%)  translateY(108%)  rotate(5deg)   scale(0.58);opacity:0.72} }
+@keyframes h-btn1-out   { 0%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} 100%{transform:translateX(-70%) translateY(90%)   rotate(-20deg) scale(0.52);opacity:0.72} }
+@keyframes h-btn2-out   { 0%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} 100%{transform:translateX(-14%) translateY(-108%) rotate(-10deg) scale(0.52);opacity:0.72} }
+
+/* FLY-IN keyframes — spring easing creates spider-web overshoot/snap */
+@keyframes h-badge-in  { 0%{transform:translateX(68%)  translateY(-78%)  rotate(18deg)  scale(0.50);opacity:0.72} 100%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} }
+@keyframes h-title1-in { 0%{transform:translateX(-90%) translateY(-6%)   rotate(-16deg) scale(0.44);opacity:0.72} 100%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} }
+@keyframes h-title2-in { 0%{transform:translateX(84%)  translateY(6%)    rotate(14deg)  scale(0.44);opacity:0.72} 100%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} }
+@keyframes h-sub-in    { 0%{transform:translateX(16%)  translateY(108%)  rotate(5deg)   scale(0.58);opacity:0.72} 100%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} }
+@keyframes h-btn1-in   { 0%{transform:translateX(-70%) translateY(90%)   rotate(-20deg) scale(0.52);opacity:0.72} 100%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} }
+@keyframes h-btn2-in   { 0%{transform:translateX(-14%) translateY(-108%) rotate(-10deg) scale(0.52);opacity:0.72} 100%{transform:translateX(0) translateY(0) rotate(0) scale(1);opacity:1} }
+
+/* FLY-OUT classes — staggered for organic scatter */
+.h-badge-out  { animation: h-badge-out  0.58s 0.00s cubic-bezier(0.55,0,1,0.38) forwards; }
+.h-title1-out { animation: h-title1-out 0.62s 0.03s cubic-bezier(0.55,0,1,0.38) forwards; }
+.h-title2-out { animation: h-title2-out 0.65s 0.06s cubic-bezier(0.55,0,1,0.38) forwards; }
+.h-sub-out    { animation: h-sub-out    0.55s 0.04s cubic-bezier(0.55,0,1,0.38) forwards; }
+.h-btn1-out   { animation: h-btn1-out   0.60s 0.08s cubic-bezier(0.55,0,1,0.38) forwards; }
+.h-btn2-out   { animation: h-btn2-out   0.52s 0.02s cubic-bezier(0.55,0,1,0.38) forwards; }
+
+/* FLY-IN classes — cubic-bezier(0.34,1.4,0.64,1) = spring overshoot → settle */
+.h-badge-in  { animation: h-badge-in  0.90s 0.00s cubic-bezier(0.34,1.4,0.64,1) forwards; }
+.h-title1-in { animation: h-title1-in 0.92s 0.04s cubic-bezier(0.34,1.4,0.64,1) forwards; }
+.h-title2-in { animation: h-title2-in 0.88s 0.08s cubic-bezier(0.34,1.4,0.64,1) forwards; }
+.h-sub-in    { animation: h-sub-in    0.85s 0.06s cubic-bezier(0.34,1.4,0.64,1) forwards; }
+.h-btn1-in   { animation: h-btn1-in   0.94s 0.10s cubic-bezier(0.34,1.4,0.64,1) forwards; }
+.h-btn2-in   { animation: h-btn2-in   0.86s 0.02s cubic-bezier(0.34,1.4,0.64,1) forwards; }
